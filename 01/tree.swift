@@ -53,12 +53,12 @@ class TreeGenerator<T> : GeneratorType {
 let myTree = Tree.Branch(Tree.Branch(Tree.Leaf,
                                     3,
                                     Tree.Leaf),
-                    5,
-                    Tree.Branch(Tree.Branch(Tree.Leaf,
-                                            2,
-                                            Tree.Leaf),
-                                4,
-                                Tree.Leaf))
+                         5,
+                         Tree.Branch(Tree.Branch(Tree.Leaf,
+                                                 2,
+                                                 Tree.Leaf),
+                                     4,
+                                     Tree.Leaf))
 
 for x in myTree {
   print(x)
