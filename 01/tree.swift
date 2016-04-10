@@ -5,19 +5,27 @@ indirect enum Tree<T>{
 }
 
 extension Tree {
+
+  func traverse(callback: (Element) -> ()) {
+    if case .Branch(let left, let val, let right) = self {
+      callback(val)
+      left.traverse(callback)
+      right.traverse(callback)
+    }
+  }
+
   func flatten() -> [Element] {
     var vals = [Element]()
-    func traverse(tree: Tree<T>) {
-      if case .Branch(let left, let val, let right) = tree {
-        vals.append(val)
-        traverse(left)
-        traverse(right)
-      }
+    func appendToVals(val: Element) {
+      vals.append(val)
     }
-    traverse(self)
+    traverse(appendToVals)
     return vals
   }
 }
+
+// Implement SequenceType
+//------------------------------------------------------------
 
 extension Tree : SequenceType {
   func generate() -> TreeGenerator<Element> {
